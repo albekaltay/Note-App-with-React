@@ -4,12 +4,16 @@ const initialState = {
      items : [
         {note: "Note 1",id:1,color:""},
      ],
+        searchedItems : 
+        [  {note: "",id:null,color:""}
+    ],
 };
+
 
 export const notesSlice = createSlice({
     name: "Notes Slice",
     initialState,
-    searchedColor: "",
+ 
     reducers: {
         addNote: (state, action) => {
             state.items.push(action.payload);
@@ -18,8 +22,8 @@ export const notesSlice = createSlice({
          
         },
         updateSearchedColor: (state,action) => {
-            state.searchedColor = action.payload
-            console.log(state.searchedColor);
+            state.searchedItems = action.payload
+            console.log(action.payload)
         
         },
         updateNote: (state, action) => {

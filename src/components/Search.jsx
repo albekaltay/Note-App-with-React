@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Input,Box, Button} from '@chakra-ui/react'
 import { CenterWrap } from './Styled';
 import { useSelector,useDispatch } from 'react-redux';
@@ -15,16 +15,21 @@ import { Search2Icon} from '@chakra-ui/icons'
 const Search = () => {
   const dispatch = useDispatch();
   const items = useSelector(state => state.notes.items)
-  const [search, setSearch] = React.useState('');
+  const [search, setSearch] = React.useState("");
 
-  const filtered =  items.filter(item => item.note === search)
+  const filteredSearchedItems =  items.filter(item => item.note.includes(search))
+ 
+ 
+ 
 
   const handleChangeColor = () => {
-    dispatch(updateSearchedColor(filtered[0].color))
+    dispatch(updateSearchedColor(filteredSearchedItems))
     setSearch('')
+    
   }
 
 
+  
   return (
     <Box   p={4} > 
     <CenterWrap> 
